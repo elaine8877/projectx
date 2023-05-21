@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑜你在珈</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <h2 class="logo">Yoga</h2>
+        <nav class="navigation">
+            <a href="index.html">首頁</a>
+            <a href="feature.html">作品特色</a>
+            <a href="report.html">問題回報</a>
+            <a href="game.html">進入遊戲</a>
+            <button class="login-popup" onclick="window.location.href='login.html'">login</button>
+        </nav>
+    </header>
+
+    <div class="game" id="game" style="border: 2px black solid;width: 806px;">
+
+        <video autoplay muted id="loading" style="width: 800px;">
+            <source src="images/loading.mp4" type="video/mp4">
+        </video>
+        <div id="game_index" class="game_index" style="display: none; width: 800px;z-index: 40;">
+            <img class="game_background" id="game_background" src="images/game_background.png"
+                style="width: 100%;position:relative;z-index: 45;">
+            <!-- <video autoplay muted id="warmup" style="width: 800px;">
+                <source src="images/右擺頭_1.mp4" type="video/mp4"
+                    style="width: 100%;position:absolute;z-index: 48;transform: translate(150%,-125%);">
+            </video> -->
+            <input type="image" class="startbtn" id="startbtn" src="images/button3.png"
+                style="display: none;width: 200px; position: absolute;transform: translate(150%,-125%);z-index: 50;">
+        </div>
+    </div>
+    <button onclick="toggleFullScreen()">進入全螢幕</button>
+</body>
+<script>
+    var video = document.getElementById('loading');
+    var index = document.getElementById('game_index');
+    var startbtn = document.getElementById('startbtn');
+    var game = document.getElementById('game');
+    var game_background = document.getElementById('game_background');
+    video.addEventListener('ended', function () {
+        this.style.display = 'none';
+        index.style.display = 'block';
+        startbtn.style.display = 'block';
+    });
+    //全螢幕
+    document.addEventListener("keypress", function (e) {
+        if (e.keyCode === 13) {
+            toggleFullScreen();
+        }
+    }, false);
+
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            video.style.width = '100%';
+            index.style.width = '100%';
+            startbtn.style.transform = 'translate(300%,-175%) scale(1.7)';
+            document.getElementById('game').requestFullscreen();
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+</script>
+
+
+</html>
