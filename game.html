@@ -37,6 +37,10 @@
             <input type="image" class="startbtn" id="startbtn" src="images/button3.png"
                 style="display: none;width: 200px; position: absolute;transform: translate(150%,-125%);z-index: 50;">
         </div>
+        <div id="warmup" style="display: none;">
+            <img src="images/--unscreen.gif">
+            <script src="posenet.js"></script>
+        </div>
     </div>
     <button onclick="toggleFullScreen()">進入全螢幕</button>
 </body>
@@ -58,6 +62,13 @@
         }
     }, false);
 
+    document.addEventListener('fullscreenchange', function () {
+        if (!document.fullscreenElement) {
+            console.log('Exited fullscreen!');
+            startbtn.style.transform = 'translate(150%,-125%) scale(1)';
+        }
+    }, false);
+
     function toggleFullScreen() {
         if (!document.fullscreenElement) {
             video.style.width = '100%';
@@ -68,8 +79,15 @@
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             }
+            startbtn.style.transform = 'translate(300%,-175%) scale(0.5)';
         }
     }
+    //示範影片
+    startbtn.addEventListener('click', function () {
+        index.style.display = "none";
+        warmup.style.display = "block";
+        canvas.style.display = "block";
+    });
 </script>
 
 
