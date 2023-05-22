@@ -102,7 +102,10 @@ header {
     margin: 0 0 20px 0;
 }
 
-/*game*/
+/*camera*/
+canvas {
+    display: none;
+}
 
 /* login&register */
 .wrapper {
