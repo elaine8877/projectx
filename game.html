@@ -33,10 +33,7 @@
         <div id="game_index" class="game_index" style="display: none; width: 800px;z-index: 40;">
             <img class="game_background" id="game_background" src="images/game_background.png"
                 style="width: 100%;position:relative;z-index: 45;">
-            <!-- <video autoplay muted id="warmup" style="width: 800px;">
-                <source src="images/右擺頭_1.mp4" type="video/mp4"
-                    style="width: 100%;position:absolute;z-index: 48;transform: translate(150%,-125%);">
-            </video> -->
+
             <input type="image" class="startbtn" id="startbtn" src="images/button3.png"
                 style="display: none;width: 200px; position: absolute;transform: translate(150%,-125%);z-index: 50;">
         </div>
@@ -44,6 +41,10 @@
             <img src="images/--unscreen.gif">
             <script src="posenet.js"></script>
         </div>
+        <!-- <video autoplay muted id="warmup" style="width: 800px;">
+                <source src="images/右擺頭_1.mp4" type="video/mp4"
+                    style="width: 100%;position:absolute;z-index: 48;transform: translate(150%,-125%);">
+            </video> -->
     </div>
     <button onclick="toggleFullScreen()">進入全螢幕</button>
 </body>
@@ -64,7 +65,6 @@
             toggleFullScreen();
         }
     }, false);
-
     document.addEventListener('fullscreenchange', function () {
         if (!document.fullscreenElement) {
             console.log('Exited fullscreen!');
