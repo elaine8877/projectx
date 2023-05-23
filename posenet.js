@@ -15,8 +15,20 @@ let eye1x = 0, eye1y = 0,
     knee2x = 0, knee2y = 0,
     ankle1x = 0, ankle1y = 0,
     ankle2x = 0, ankle2y = 0;
+
+var cnv;
+
+function centerCanvas() {
+    var divElement = document.getElementById('warmup');
+    var rect1 = divElement.getBoundingClientRect();
+    var x = rect1.x + 320
+    var y = rect1.y + 1
+    cnv.position(x, y);
+}
+
 function setup() {
-    createCanvas(480, 480);
+    cnv = createCanvas(480, 480);
+    centerCanvas();
     video = createCapture(VIDEO);
     video.hide();
     pose = ml5.poseNet(video);

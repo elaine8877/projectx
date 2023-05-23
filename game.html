@@ -46,7 +46,7 @@
                     style="width: 100%;position:absolute;z-index: 48;transform: translate(150%,-125%);">
             </video> -->
     </div>
-    <button onclick="toggleFullScreen()">進入全螢幕</button>
+    <button onclick="toggleFullScreen()">全螢幕</button>
 </body>
 <script>
     var video = document.getElementById('loading');
@@ -69,6 +69,7 @@
         if (!document.fullscreenElement) {
             console.log('Exited fullscreen!');
             startbtn.style.transform = 'translate(150%,-125%) scale(1)';
+            centerCanvas()
         }
     }, false);
 
@@ -76,8 +77,10 @@
         if (!document.fullscreenElement) {
             video.style.width = '100%';
             index.style.width = '100%';
-            startbtn.style.transform = 'translate(300%,-175%) scale(1.7)';
-            document.getElementById('game').requestFullscreen();
+            // startbtn.style.transform = 'translate(300%,-175%) scale(1.7)';
+            // document.getElementById('game').requestFullscreen();
+            document.documentElement.requestFullscreen();
+            setTimeout(()=>{centerCanvas()},100)
         } else {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -90,6 +93,7 @@
         index.style.display = "none";
         warmup.style.display = "block";
         canvas.style.display = "block";
+        centerCanvas()
     });
 </script>
 
